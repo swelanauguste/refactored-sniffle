@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+  web:
+    build: ./app
+    # command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn cf.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    expose:
+      - 8000
+    environment:
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DATABASE=crown
+      - SQL_USER=crown
+      - SQL_PASSWORD=crown
+      - SQL_HOST=db
+      - SQL_PORT=5432
+      - DATABASE=postgres
+      - DJANGO_SUPERUSER_PASSWORD=superuser
+    depends_on:
+      - db
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=crown
+      - POSTGRES_PASSWORD=crown
+      - POSTGRES_DB=crown
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    ports:
+      - 80:80
+    depends_on:
+      - web
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
