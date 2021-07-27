@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+    Applications
+{% endblock head_title %}
+
+
+{% block content %}
+    <div class="container my-5">
+        <h1 class="fs-1">Applications</h1>
+        <div class="my-5">
+        {% for i in object_list %}
+
+        {% empty %}
+            <p class="text-center">No Applications</p>
+        {% endfor %}
+    </div>
+    </div>
+{% endblock content %}
+    
+    
