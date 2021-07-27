@@ -12,20 +12,31 @@
 <div class="container my-5">
     <h2 class="fs-2">{{object}}</h2>
     <hr>
-    <div class="card p-5"
-        style="width: 36rem;">
-        <form action=""
-            method="post">
-            {% csrf_token %}
-            {{form|crispy}}
-            <hr>
-            <div class="text-end my-3">
-                <button class="btn btn-lg btn-dark"
-                    type="submit">Next</button>
+    <div class="row">
+        <div class="col">
+            <div class="card shadow mt-5 p-5 mx-auto" style="width: 36rem;">
+               <p class="card-text">{{object}}</p>
             </div>
-        </form>
-        
+        </div>
+        <div class="col">
+            <div class="card shadow mx-auto p-5 mt-5"
+                style="width: 36rem;">
+                    <form action=""
+                        method="post">
+                        {% csrf_token %}
+                        {{form|crispy}}
+
+                        <div class="text-end">
+                            <button class="btn btn-lg btn-dark"
+                                type="submit">Next</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+
     </div>
+
+
 </div>
 
 {% endblock content %}

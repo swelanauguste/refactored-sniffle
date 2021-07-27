@@ -15,3 +15,5 @@ class IdentificationDocumentCreateForm(forms.ModelForm):
         model = IdentificationDocument
         fields = "__all__"
         exclude = ["updated_by", "created_by"]
+        widgets = {"applicant": forms.HiddenInput()}
+
