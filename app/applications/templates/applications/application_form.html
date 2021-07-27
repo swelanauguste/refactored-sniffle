@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block head_title %}
+New Application
+{% endblock head_title %}
+
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="fs-2">New Application</h1>
+    <hr>
+    <form action=""
+        method="post">
+        {% csrf_token %}
+        <div class="col-lg-4">
+            {{application_create_form|crispy}}
+            {{applicant_create_form|crispy}}
+            {{property_create_form|crispy}}
+        </div>
+        <button class="btn btn-dark my-3 px-5" type="submit">submit</button>
+    </form>
+</div>
+
+
+{% endblock content %}

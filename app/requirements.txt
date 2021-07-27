@@ -1,6 +1,7 @@
-# black==21.7b0
+black==21.7b0
 Django==3.2.5
-# isort==5.9.2
-# pylint-django==2.4.4
-psycopg2-binary
-gunicorn
+django-allauth==0.45.0
+django-crispy-forms==1.12.0
+isort==5.9.2
+pylint-django==2.4.4
+gunicorn==20.1.0
