@@ -10,5 +10,16 @@ Home
 <div class="container my-5">
     <h1 class="fs-1">Home</h1>
     <hr>
+    <a class="text-decoration-none text-light"
+        href="{% url 'applicants:applicant-create' %}">
+        <div class="card bg-dark"
+            style="width: 22rem;">
+            <h5 class="card-header">Start an application process</h5>
+            <div class="card-body">
+                <p class="card-text">Record Application inform</p>
+
+            </div>
+        </div>
+    </a>
 </div>
 {% endblock content %}
