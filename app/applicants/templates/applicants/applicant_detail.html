@@ -16,13 +16,22 @@
         <div class="col">
             <div class="card shadow mt-5 p-5 mx-auto" style="width: 36rem;">
                <p class="card-text">{{object}}</p>
+               <p class="card-text">
+                <a target="_blank"
+                {% if object.applications.last.document.url %}
+                href="{{object.applications.last.document.url}}"
+                {% endif %}
+                     >   
+                {{object.applications.last.document_no}}
+            </a>
+            </p>
             </div>
         </div>
         <div class="col">
             <div class="card shadow mx-auto p-5 mt-5"
                 style="width: 36rem;">
                     <form action=""
-                        method="post">
+                        method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{form|crispy}}
 

@@ -76,7 +76,7 @@ class IdentificationDocument(TimeStampMixin):
         related_name="document_types",
         on_delete=models.CASCADE,
     )
-    document_no = models.CharField(max_length=25)
+    document_no = models.CharField(max_length=25, unique=True)
     document = models.FileField(upload_to=identification_documents_directory_path)
 
     def __str__(self):

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.generic import CreateView, DetailView
 from django.views.generic.edit import FormMixin
 
@@ -14,6 +15,9 @@ class ApplicantCreateView(CreateView):
 class ApplicantDetailView(FormMixin, DetailView):
     model = Applicant
     form_class = IdentificationDocumentCreateForm
+
+    def get_success_url(self):
+        return reverse('applicants:applicant-detail', kwargs={'pk': self.object.pk})
 
     def get_initial(self):
         return {"applicant": self.get_object()}
